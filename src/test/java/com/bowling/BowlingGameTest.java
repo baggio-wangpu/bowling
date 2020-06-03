@@ -13,7 +13,7 @@ class BowlingGameTest {
     BowlingGame game = new BowlingGame();
 
     // When
-    game.recordThrow(10);
+    game.startGame(10);
 
     // then
     assertEquals(10, game.getRoundScore(1));
@@ -26,8 +26,8 @@ class BowlingGameTest {
     BowlingGame game = new BowlingGame();
 
     // When
-    game.recordThrow(7);
-    game.recordThrow(3);
+    game.startGame(7);
+    game.startGame(3);
 
     // Then
     assertEquals(10, game.getRoundScore(1));
@@ -40,8 +40,8 @@ class BowlingGameTest {
     BowlingGame game = new BowlingGame();
 
     // When
-    game.recordThrow(7);
-    game.recordThrow(2);
+    game.startGame(7);
+    game.startGame(2);
 
     // Then
     assertEquals(9, game.getRoundScore(1));
@@ -54,9 +54,9 @@ class BowlingGameTest {
     BowlingGame game = new BowlingGame();
 
     // When
-    game.recordThrow(10);
-    game.recordThrow(8);
-    game.recordThrow(1);
+    game.startGame(10);
+    game.startGame(8);
+    game.startGame(1);
 
     // Then
     assertEquals(10 + 9, game.getRoundScore(1));
@@ -69,15 +69,15 @@ class BowlingGameTest {
     BowlingGame game = new BowlingGame();
 
     // When
-    game.recordThrow(5);
-    game.recordThrow(5);
+    game.startGame(3);
+    game.startGame(7);
 
-    game.recordThrow(8);
-    game.recordThrow(1);
+    game.startGame(2);
+    game.startGame(8);
 
     // Then
-    assertEquals(10 + 8, game.getRoundScore(1));
-    assertEquals(game.getRoundScore(1) + 8 + 1, game.getTotalScore());
+    assertEquals(10 + 2, game.getRoundScore(1));
+    assertEquals(game.getRoundScore(1) + 8 + 2, game.getTotalScore());
   }
 
   @Test
@@ -86,13 +86,13 @@ class BowlingGameTest {
     BowlingGame game = new BowlingGame();
 
     // When
-    game.recordThrow(5);
-    game.recordThrow(3);
+    game.startGame(3);
+    game.startGame(4);
 
-    game.recordThrow(8);
-    game.recordThrow(1);
+    game.startGame(6);
+    game.startGame(2);
 
     // Then
-    assertEquals(5 + 3 + 8 + 1, game.getTotalScore());
+    assertEquals(3 + 4 + 6 + 2, game.getTotalScore());
   }
 }
