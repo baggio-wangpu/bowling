@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class BowlingGameTest {
 
   @Test
-  void should_return_ten_score_when_caculateScore_given_first_ball_kick_all() {
+  void should_return_ten_score_when_calculateScore_given_first_ball_kick_all() {
 
     // given
     BowlingGame game = new BowlingGame();
@@ -21,7 +21,7 @@ class BowlingGameTest {
   }
 
   @Test
-  void should_have_round1_and_total_score_equal_10_when_record_throw_given_round1_is_spare() {
+  void should_return_round1_and_total_score_equal_10_when_calculateScore_given_round1_is_spare() {
     // Given
     BowlingGame game = new BowlingGame();
 
@@ -35,7 +35,7 @@ class BowlingGameTest {
   }
 
   @Test
-  void should_have_round1_and_total_score_equal_9_when_record_throw_given_round1_is_not_strike_or_spare() {
+  void should_return_round1_and_total_score_equal_9_when_calculateScore_given_round1_is_not_strike_or_spare() {
     // Given
     BowlingGame game = new BowlingGame();
 
@@ -49,7 +49,7 @@ class BowlingGameTest {
   }
 
   @Test
-  void should_have_round1_equal_10_plus_round2_score_and_total_score_equal_2times_round2_score_plus_10_when_record_throw_given_round1_strike_and_round2_not_spare() {
+  void should_return_round1_score_and_total_score_equal_2times_round2_score_plus_10_when_calculateScore_given_round1_strike_and_round2_not_spare() {
     // Given
     BowlingGame game = new BowlingGame();
 
@@ -64,7 +64,7 @@ class BowlingGameTest {
   }
 
   @Test
-  void should_have_round1_equal_10_plus_round2_first_throw_and_total_score_equal_round1_score_plus_round2_throws_when_record_throw_given_round1_spare_and_round2_not_spare() {
+  void should_return_round1_correct_and_total_score_equal_round1_score_plus_round2_throws_when_calculateScore_given_round1_spare_and_round2_not_spare() {
     // Given
     BowlingGame game = new BowlingGame();
 
@@ -81,7 +81,7 @@ class BowlingGameTest {
   }
 
   @Test
-  void should_have_total_score_equal_all_4_throws_when_record_throw_given_round1_not_spare_and_round2_not_spare() {
+  void should_return_total_score_equal_all_4_throws_when_calculateScore_given_round1_not_spare_and_round2_not_spare() {
     // Given
     BowlingGame game = new BowlingGame();
 
@@ -94,5 +94,19 @@ class BowlingGameTest {
 
     // Then
     assertEquals(3 + 4 + 6 + 2, game.getTotalScore());
+  }
+
+  @Test
+  void should_return_round1_score_20_plus_new_throw_when_calculateScore_given_round1_strike_and_round2_strike_then_next_round() {
+    // Given
+    BowlingGame match = new BowlingGame();
+
+    // When
+    match.startGame(10);
+    match.startGame(10);
+    match.startGame(5);
+
+    // Then
+    assertEquals(20 + 5, match.getRoundScore(1));
   }
 }
